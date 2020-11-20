@@ -1,3 +1,4 @@
 {
-    "mongoURL" : "mongodb+srv://ARehman:123@dev-connecter.njrso.mongodb.net/<dbname>?retryWrites=true&w=majority"
+    "mongoURL" : "mongodb+srv://ARehman:123@dev-connecter.njrso.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwttoken" : "secrettoken"
 }
