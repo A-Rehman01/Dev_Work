@@ -22,7 +22,7 @@ const ProfileSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  skill: {
+  skills: {
     // Php,java,react etc
     type: [String],
     required: true,
