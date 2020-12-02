@@ -2,7 +2,9 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
-const Register = (props) => {
+import { register } from "../../actions/auth";
+
+const Register = ({ setAlert, register }) => {
   const [formData, setformData] = useState({
     name: "",
     email: "",
@@ -18,9 +20,10 @@ const Register = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (password !== password2) {
-      props.setAlert("Password Does Not match", "danger");
+      setAlert("Password Does Not match", "danger");
     } else {
-      console.log(formData);
+      register({ name, email, password });
+      // console.log(formData);
     }
   };
   return (
@@ -35,7 +38,7 @@ const Register = (props) => {
             type="text"
             placeholder="Name"
             name="name"
-            required
+            // required
             value={name}
             onChange={(e) => onChange(e)}
           />
@@ -45,7 +48,7 @@ const Register = (props) => {
             type="email"
             placeholder="Email Address"
             name="email"
-            required
+            // required
             value={email}
             onChange={(e) => onChange(e)}
           />
@@ -60,7 +63,7 @@ const Register = (props) => {
             placeholder="Password"
             name="password"
             minLength="6"
-            required
+            // required
             value={password}
             onChange={(e) => onChange(e)}
           />
@@ -71,7 +74,7 @@ const Register = (props) => {
             placeholder="Confirm Password"
             name="password2"
             minLength="6"
-            required
+            // required
             value={password2}
             onChange={(e) => onChange(e)}
           />
@@ -84,7 +87,7 @@ const Register = (props) => {
     </Fragment>
   );
 };
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);
 // const onSubmit = async (e) => {
 //   e.preventDefault();
 //   if (password !== password2) {
