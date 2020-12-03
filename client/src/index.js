@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import Store from "./Store";
+import { setUserToken } from "./Utility/setUserToken";
+import { loadUser } from "./actions/auth";
+
+if (localStorage.token) {
+  setUserToken(localStorage.token);
+}
+
+const Settoken = () => {
+  useEffect(() => {
+    Store.dispatch(loadUser());
+  }, []);
+  return null;
+};
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={Store}>
+      <Settoken />
       <App />
     </Provider>
   </React.StrictMode>,

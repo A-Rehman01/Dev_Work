@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isAuthentication }) => {
   const [formData, setformData] = useState({
     name: "",
     email: "",
@@ -26,6 +26,12 @@ const Register = ({ setAlert, register }) => {
       // console.log(formData);
     }
   };
+
+  //Redurect if user Login
+  if (isAuthentication) {
+    return <Redirect to="/dashboard" />;
+  }
+
   return (
     <Fragment>
       <h1 className="large text-primary">Sign Up</h1>
@@ -38,7 +44,7 @@ const Register = ({ setAlert, register }) => {
             type="text"
             placeholder="Name"
             name="name"
-            // required
+            required
             value={name}
             onChange={(e) => onChange(e)}
           />
@@ -48,7 +54,7 @@ const Register = ({ setAlert, register }) => {
             type="email"
             placeholder="Email Address"
             name="email"
-            // required
+            required
             value={email}
             onChange={(e) => onChange(e)}
           />
@@ -63,7 +69,7 @@ const Register = ({ setAlert, register }) => {
             placeholder="Password"
             name="password"
             minLength="6"
-            // required
+            required
             value={password}
             onChange={(e) => onChange(e)}
           />
@@ -74,7 +80,7 @@ const Register = ({ setAlert, register }) => {
             placeholder="Confirm Password"
             name="password2"
             minLength="6"
-            // required
+            required
             value={password2}
             onChange={(e) => onChange(e)}
           />
@@ -87,7 +93,12 @@ const Register = ({ setAlert, register }) => {
     </Fragment>
   );
 };
-export default connect(null, { setAlert, register })(Register);
+
+const mapStateToProps = (state) => ({
+  isAuthentication: state.auth.isAuthentication,
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);
 // const onSubmit = async (e) => {
 //   e.preventDefault();
 //   if (password !== password2) {
