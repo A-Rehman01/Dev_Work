@@ -4,10 +4,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
+import Dashboard from "./components/dashboard/Dashboard";
+
+// PrivateRoute
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 //layout
 import { Landing } from "./components/layout/Landing";
-import { Navbar } from "./components/layout/Navbar";
+import Navbar from "./components/layout/Navbar";
 import Alert from "./components/layout/Alert";
 
 const App = () => (
@@ -20,6 +24,7 @@ const App = () => (
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
         </Switch>
       </section>
     </Fragment>
