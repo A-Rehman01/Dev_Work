@@ -10,7 +10,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/routing/PrivateRoute";
 
 //layout
-import { Landing } from "./components/layout/Landing";
+import Landing from "./components/layout/Landing";
 import Navbar from "./components/layout/Navbar";
 import Alert from "./components/layout/Alert";
 
