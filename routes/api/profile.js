@@ -6,7 +6,7 @@ const { check, validationResult, body } = require("express-validator");
 const auth = require("../../middlewares/auth");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
-const { response } = require("express");
+const Post = require("../../models/Post");
 
 //@route GET /api/profile/me
 //@desc Get Current user Profile
@@ -111,7 +111,7 @@ router.post(
 
 router.get("/", async (req, res) => {
   try {
-    const profiles = await Profile.find().populate("users", ["name", "avatar"]);
+    const profiles = await Profile.find().populate("user", ["name", "avatar"]);
     res.json(profiles);
   } catch (err) {
     console.log(err.message);
@@ -127,7 +127,7 @@ router.get("/user/:user_id", async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.params.user_id,
-    }).populate("users", ["name", "avatar"]);
+    }).populate("user", ["name", "avatar"]);
     if (!profile) return res.status(400).json({ msg: "Profile not Found" });
     res.json(profile);
   } catch (err) {
@@ -144,6 +144,8 @@ router.get("/user/:user_id", async (req, res) => {
 
 router.delete("/", auth, async (req, res) => {
   try {
+    // DELETE user posts
+    await Post.deleteMany({ user: req.user.id });
     //DELETE profile
     await Profile.findOneAndRemove({ user: req.user.id });
     //DELETE user

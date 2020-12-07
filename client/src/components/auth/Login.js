@@ -25,7 +25,7 @@ const Login = ({ login, auth }) => {
     return <Redirect to="/dashboard" />;
   }
   return (
-    auth.user !== null && (
+    auth.isAuthentication !== null && (
       <Fragment>
         <h1 className="large text-primary">Sign In</h1>
         <p className="lead">
