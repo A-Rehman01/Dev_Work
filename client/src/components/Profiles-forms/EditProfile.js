@@ -38,11 +38,10 @@ const EditProfile = ({
       twitter: loading || !profile.social ? "" : profile.social.twitter,
       youtube: loading || !profile.social ? "" : profile.social.youtube,
       facebook: loading || !profile.social ? "" : profile.social.facebook,
-      facebook: loading || !profile.social ? "" : profile.social.facebook,
       linkedin: loading || !profile.social ? "" : profile.social.linkedin,
       instagram: loading || !profile.social ? "" : profile.social.instagram,
     });
-  }, [loading]);
+  }, [loading, getCurrentProfile]);
   const {
     company,
     website,

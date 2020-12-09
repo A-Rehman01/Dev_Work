@@ -6,12 +6,14 @@ import ProfilesItem from "./ProfilesItem";
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
     getProfiles();
-  }, []);
+  }, [getProfiles]);
   console.log(loading);
   if (loading) {
     return <Spinner />;
   }
-  return (
+  return loading ? (
+    <Spinner />
+  ) : (
     <Fragment>
       <h1 className="large text-primary">Developers</h1>
       <p className="lead">
@@ -25,7 +27,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
             <ProfilesItem key={profile._id} profile={profile} />
           ))
         ) : (
-          <h4>No Profiles found...</h4>
+          <Spinner />
         )}
       </div>
     </Fragment>
