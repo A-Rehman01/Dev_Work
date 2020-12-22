@@ -7,7 +7,6 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
     getProfiles();
   }, [getProfiles]);
-  console.log(loading);
   if (loading) {
     return <Spinner />;
   }
