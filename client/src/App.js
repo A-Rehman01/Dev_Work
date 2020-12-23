@@ -7,6 +7,7 @@ import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
 import Profiles from "./components/Profiles/Profiles";
 import Profile from "./components/Profile/Profile";
+import Posts from "./components/posts/Posts";
 
 //CreateProfile
 import CreateProfile from "./components/Profiles-forms/CreateProfile";
@@ -47,6 +48,7 @@ const App = () => (
             component={AddExperience}
           />
           <PrivateRoute exact path="/add-education" component={AddEducation} />
+          <PrivateRoute exact path="/posts" component={Posts} />
         </Switch>
       </section>
     </Fragment>
