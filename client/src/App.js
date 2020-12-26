@@ -8,6 +8,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Profiles from "./components/Profiles/Profiles";
 import Profile from "./components/Profile/Profile";
 import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
 
 //CreateProfile
 import CreateProfile from "./components/Profiles-forms/CreateProfile";
@@ -49,6 +50,7 @@ const App = () => (
           />
           <PrivateRoute exact path="/add-education" component={AddEducation} />
           <PrivateRoute exact path="/posts" component={Posts} />
+          <PrivateRoute exact path="/posts/:id" component={Post} />
         </Switch>
       </section>
     </Fragment>

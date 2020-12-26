@@ -172,7 +172,7 @@ router.post(
         avatar: user.avatar,
         user: req.user.id,
       };
-      post.comments.unshift(postComment);
+      post.comments.push(postComment);
       await post.save();
       res.json(post.comments);
     } catch (err) {
