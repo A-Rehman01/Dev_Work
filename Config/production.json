@@ -1,0 +1,6 @@
+{
+    "mongoURL" : "mongodb+srv://ARehman:123@dev-connecter.njrso.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwttoken" : "secrettoken",
+    "gitHubSecret":"338288a4f387ad22cae4767bff6a7331417f4e34",
+    "gitHubSecretID":"93ba53ee00bc76b64244"
+}
