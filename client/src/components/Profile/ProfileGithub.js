@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect, Connect } from "react-redux";
+import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import { getGithubRepos } from "../../actions/profile";
 
